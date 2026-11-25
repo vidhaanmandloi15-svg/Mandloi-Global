@@ -1,113 +1,367 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Mandloi Global connects international buyers with Indian agricultural products through sourcing and trade coordination.">
-  <title>Mandloi Global | Indian Agricultural Sourcing & Trade</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Mandloi Global connects international buyers with Indian agricultural suppliers.">
+<title>Mandloi Global | Global Trade</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --navy:#101b2b;
+  --gold:#c7a66a;
+  --cream:#f5f0e6;
+  --white:#fffdf8;
+  --muted:#66717c;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:85px}
+body{margin:0;background:var(--white);color:#202a34;font-family:"DM Sans",sans-serif;line-height:1.7}
+a{text-decoration:none;color:inherit}
+button,input,select,textarea{font:inherit}
+.wrap{width:min(1120px,90%);margin:auto}
+
+header{position:sticky;top:0;z-index:10;background:#101b2bf5;color:white;border-bottom:1px solid #ffffff20}
+nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font:600 24px "Playfair Display",serif;letter-spacing:1px}
+.logo small{display:block;color:var(--gold);font:700 9px "DM Sans",sans-serif;letter-spacing:2px}
+.links{display:flex;align-items:center;gap:23px;font-size:11px;font-weight:700}
+.links a:hover{color:var(--gold)}
+.menu{display:none;background:transparent;color:white;border:1px solid #ffffff55;padding:8px}
+
+.btn{display:inline-block;padding:13px 19px;background:var(--gold);color:var(--navy);border:1px solid var(--gold);font-size:11px;font-weight:700;cursor:pointer;transition:.25s}
+.btn:hover{background:transparent;color:var(--gold);transform:translateY(-2px)}
+.btn.outline{background:transparent;color:white}
+.btn.outline:hover{color:var(--gold)}
+
+.hero{min-height:570px;display:flex;align-items:center;position:relative;overflow:hidden;background:var(--navy);color:white}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#09121cf2,#09121cbb,#09121c55),url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1500&q=75") center/cover;z-index:0}
+.hero-content{position:relative;z-index:1;padding:85px 0;max-width:760px;animation:appear .9s ease both}
+.eyebrow{font-size:10px;font-weight:700;letter-spacing:3px;color:var(--gold)}
+h1,h2,h3{font-family:"Playfair Display",Georgia,serif;line-height:1.15;font-weight:500}
+h1{font-size:clamp(45px,7vw,78px);margin:20px 0}
+h1 em{color:var(--gold)}
+.hero p{max-width:570px;color:#d8dfe7;font-size:15px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:27px}
+.hero-note{font-size:10px;letter-spacing:2px;color:#d8dfe7;margin-top:32px}
+.hero-note span{color:var(--gold);padding:0 8px}
+
+.trust{background:var(--cream);border-bottom:1px solid #dfd6c7}
+.trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:23px 0}
+.trust strong{display:block;color:var(--navy);font-size:13px}
+.trust p{margin:3px 0;font-size:12px;color:var(--muted)}
+
+section{padding:76px 0}
+.section-head{max-width:650px;margin-bottom:35px}
+h2{font-size:clamp(34px,4.5vw,49px);color:var(--navy);margin:13px 0}
+.section-head p,.muted{font-size:14px;color:var(--muted)}
+
+.products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.product{padding:25px;background:var(--cream);border:1px solid #dfd6c7;transition:transform .25s,box-shadow .25s}
+.product:hover{transform:translateY(-6px);box-shadow:0 15px 30px #101b2b12;border-color:var(--gold)}
+.product-no{font-size:10px;letter-spacing:2px;color:#94713c}
+.product h3{font-size:29px;color:var(--navy);margin:15px 0 8px}
+.product p{font-size:12px;color:var(--muted)}
+.tag{display:inline-block;border:1px solid #d3c5ad;padding:4px 7px;margin:4px 3px 12px 0;font-size:9px}
+.product-link{display:block;color:#87662e;font-size:11px;font-weight:700;margin-top:7px}
+
+.process{background:var(--navy);color:white}
+.process h2{color:white}
+.process .section-head p{color:#c0c8d0}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.step{border-top:1px solid #c7a66a80;padding-top:17px}
+.step b{font:30px "Playfair Display",serif;color:var(--gold)}
+.step h3{font-size:23px;margin:8px 0}
+.step p{font-size:12px;color:#c0c8d0}
+
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center}
+.about-image{min-height:340px;background:linear-gradient(#101b2b35,#101b2b50),url("https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=900&q=75") center/cover;display:flex;align-items:end;padding:22px;color:white;font:30px "Playfair Display",serif}
+.about-panel{background:var(--navy);color:white;padding:30px;border-left:3px solid var(--gold)}
+.about-panel h3{font-size:29px}
+.about-panel p{font-size:13px;color:#d1d7de}
+.promise{padding-left:18px}
+.promise li{padding:9px 0;border-bottom:1px solid #dfd6c7;font-size:13px}
+
+.enquiry{background:var(--cream)}
+.enquiry-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:40px;align-items:start}
+.contact-info p{font-size:13px;color:var(--muted)}
+.contact-line{border-top:1px solid #dfd6c7;padding:14px 0;font-size:12px}
+.contact-line strong{display:block;color:var(--navy)}
+form{background:var(--white);padding:26px;border:1px solid #dfd6c7}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:1/-1}
+label{font-size:10px;font-weight:700;color:#4e5963}
+input,select,textarea{width:100%;padding:12px;border:1px solid #d8d5ce;background:white;color:#202a34;font-size:12px;border-radius:0}
+input:focus,select:focus,textarea:focus{outline:1px solid var(--gold)}
+textarea{min-height:100px;resize:vertical}
+.privacy{font-size:10px;color:var(--muted)}
+.submit{width:100%;margin-top:10px}
+
+footer{background:#0b1420;color:white;padding:30px 0}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}
+footer p{font-size:10px;color:#aeb7c1}
+.footer-links{display:flex;flex-wrap:wrap;gap:16px;font-size:11px}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s,transform .65s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@keyframes appear{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes rotate{to{transform:rotate(360deg)}}
+
+@media(max-width:850px){
+ .menu{display:block}
+ .links{display:none;position:absolute;top:76px;left:0;right:0;background:var(--navy);padding:20px 5%;flex-direction:column;align-items:stretch}
+ .links.open{display:flex}
+ .products-grid{grid-template-columns:repeat(2,1fr)}
+ .steps{grid-template-columns:repeat(2,1fr)}
+ .about-grid,.enquiry-grid{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+ nav{min-height:70px}
+ .links{top:70px}
+ .hero{min-height:520px}
+ .hero-content{padding:65px 0}
+ .actions{flex-direction:column;align-items:stretch;max-width:310px}
+ .trust-grid,.products-grid,.steps{grid-template-columns:1fr}
+ .form-grid{grid-template-columns:1fr}
+ .field.full{grid-column:auto}
+ .footer-inner{align-items:flex-start;flex-direction:column}
+ section{padding:58px 0}
+}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ *,*::before,*::after{animation:none!important;transition:none!important}
+ .reveal{opacity:1;transform:none}
+}
+</style>
 </head>
+
 <body>
-  <header class="site-header">
-    <a class="brand" href="#home" aria-label="Mandloi Global home">
-      <span class="brand-mark">MG</span>
-      <span class="brand-name">MANDLOI <b>GLOBAL</b><small>INDIA · SOURCING · TRADE</small></span>
-    </a>
-    <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
-    <nav class="nav" aria-label="Main navigation">
-      <a href="#products">Products</a>
-      <a href="#approach">Our approach</a>
-      <a href="#about">About</a>
-      <a class="nav-cta" href="#contact">Trade enquiry <span>↗</span></a>
-    </nav>
-  </header>
+<header>
+ <nav class="wrap">
+  <a class="logo" href="#home">MANDLOI GLOBAL<small>INDIA · INTERNATIONAL TRADE</small></a>
+  <button class="menu" id="menuBtn" aria-expanded="false">MENU ☰</button>
+  <div class="links" id="navLinks">
+   <a href="#home">HOME</a>
+   <a href="#products">PRODUCTS</a>
+   <a href="#process">HOW WE WORK</a>
+   <a href="#about">ABOUT</a>
+   <a href="#enquiry" class="btn">SEND AN ENQUIRY ↗</a>
+  </div>
+ </nav>
+</header>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="hero-copy">
-        <p class="eyebrow"><span></span> INDIAN AGRICULTURAL SOURCING</p>
-        <h1>Connecting Indian produce with <em>global markets.</em></h1>
-        <p class="hero-intro">Mandloi Global helps international buyers explore sourcing opportunities for rice and Indian spices, with clear communication and trade coordination from enquiry to supplier discussions.</p>
-        <div class="hero-actions">
-          <a class="button button-dark" href="#contact">Discuss a requirement <span>↗</span></a>
-          <a class="text-link" href="#products">Explore products <span>↓</span></a>
-        </div>
-        <div class="hero-note"><span class="note-line"></span><span>Built around clear enquiries, practical coordination and long-term trade relationships.</span></div>
-      </div>
-      <div class="hero-visual">
-        <div class="hero-image" role="img" aria-label="Rice grains and Indian spices arranged on a natural surface"></div>
-        <div class="image-label"><span class="label-dot"></span><span>RICE & INDIAN SPICES</span><span class="label-line"></span></div>
-        <div class="hero-stamp"><span>INDIA</span><strong>→</strong><span>WORLD</span></div>
-      </div>
-    </section>
+<main>
+<section class="hero" id="home">
+ <div class="wrap hero-content">
+  <div class="eyebrow">INDIAN ORIGIN · GLOBAL OPPORTUNITIES</div>
+  <h1>India's trade.<br><em>Your global reach.</em></h1>
+  <p>Connecting international buyers with Indian agricultural products through clear communication, supplier coordination and requirement-led sourcing.</p>
+  <div class="actions">
+   <a class="btn" href="#products">EXPLORE PRODUCTS ↗</a>
+   <a class="btn outline" href="#enquiry">DISCUSS YOUR REQUIREMENT</a>
+  </div>
+  <div class="hero-note">RICE <span>✦</span> SPICES <span>✦</span> SOURCING COORDINATION</div>
+ </div>
+</section>
 
-    <section class="trust-strip" aria-label="Our focus">
-      <div><span class="strip-number">01</span><span>Product sourcing</span></div>
-      <div><span class="strip-number">02</span><span>Buyer–supplier coordination</span></div>
-      <div><span class="strip-number">03</span><span>Enquiry-led trade discussions</span></div>
-    </section>
+<div class="trust">
+ <div class="wrap trust-grid">
+  <div><strong>Requirement-led sourcing</strong><p>Product and quantity based enquiries</p></div>
+  <div><strong>Clear communication</strong><p>Specifications, quotations and next steps</p></div>
+  <div><strong>Supplier coordination</strong><p>Connecting buyers with Indian suppliers</p></div>
+ </div>
+</div>
 
-    <section class="section products-section" id="products">
-      <div class="section-heading">
-        <div><p class="eyebrow">PRODUCT CATEGORIES</p><h2>Indian essentials.<br><em>Global possibilities.</em></h2></div>
-        <p class="section-description">Starting with selected agricultural products. Availability, specifications, origin, packaging and shipment terms are confirmed for each enquiry.</p>
-      </div>
-      <div class="product-grid">
-        <article class="product-card rice-card">
-          <div class="product-photo rice-photo" role="img" aria-label="A bowl of long-grain rice"></div>
-          <div class="product-info"><div><span class="product-index">01 / GRAINS</span><h3>Rice</h3></div><p>Explore rice sourcing options based on variety, grade, quantity and destination requirements.</p><a href="#contact" data-product="Rice">Enquire about rice <span>↗</span></a></div>
-        </article>
-        <article class="product-card">
-          <div class="product-photo spice-photo" role="img" aria-label="Turmeric, cumin and coriander spices"></div>
-          <div class="product-info"><div><span class="product-index">02 / WHOLE SPICES</span><h3>Indian spices</h3></div><p>Whole cumin, coriander, turmeric and dried red chilli enquiries for trade discussion.</p><a href="#contact" data-product="Indian spices">Enquire about spices <span>↗</span></a></div>
-        </article>
-        <article class="product-card chilli-card">
-          <div class="product-photo chilli-photo" role="img" aria-label="Dried red chillies"></div>
-          <div class="product-info"><div><span class="product-index">03 / SELECTED PRODUCE</span><h3>Dried red chilli</h3></div><p>Discuss desired type, quality parameters, packaging and target order quantity.</p><a href="#contact" data-product="Dried red chilli">Enquire about chilli <span>↗</span></a></div>
-        </article>
-      </div>
-      <p class="fine-print">Product imagery is illustrative. Actual product availability and specifications are subject to supplier confirmation.</p>
-    </section>
+<section id="products">
+ <div class="wrap">
+  <div class="section-head reveal">
+   <div class="eyebrow">OUR PRODUCT FOCUS</div>
+   <h2>From Indian fields<br>to global markets.</h2>
+   <p>Tell us the grade, quantity and destination you need. Availability, specifications, packing and pricing are confirmed with suppliers for each enquiry.</p>
+  </div>
+  <div class="products-grid">
+   <article class="product reveal">
+    <div class="product-no">01 / RICE</div><h3>Indian Rice</h3>
+    <p>Rice sourcing options for importers, wholesalers, distributors and food businesses.</p>
+    <span class="tag">Basmati</span><span class="tag">Non-Basmati</span>
+    <a class="product-link" href="#enquiry" data-product="Basmati Rice">ENQUIRE ABOUT RICE ↗</a>
+   </article>
+   <article class="product reveal">
+    <div class="product-no">02 / TURMERIC</div><h3>Golden Turmeric</h3>
+    <p>Discuss turmeric specifications, quality requirements and packaging for your market.</p>
+    <span class="tag">Turmeric</span><span class="tag">Bulk Enquiries</span>
+    <a class="product-link" href="#enquiry" data-product="Turmeric">ENQUIRE ABOUT TURMERIC ↗</a>
+   </article>
+   <article class="product reveal">
+    <div class="product-no">03 / RED CHILLI</div><h3>Red Chilli</h3>
+    <p>Share your preferred chilli type, grade, quantity and destination market.</p>
+    <span class="tag">Dried Chilli</span><span class="tag">Specifications</span>
+    <a class="product-link" href="#enquiry" data-product="Dried Red Chilli">ENQUIRE ABOUT CHILLI ↗</a>
+   </article>
+   <article class="product reveal">
+    <div class="product-no">04 / CUMIN</div><h3>Whole Cumin</h3>
+    <p>Discuss cumin sourcing based on specifications, packaging and commercial needs.</p>
+    <span class="tag">Whole Cumin</span><span class="tag">Import Enquiries</span>
+    <a class="product-link" href="#enquiry" data-product="Whole Cumin">ENQUIRE ABOUT CUMIN ↗</a>
+   </article>
+   <article class="product reveal">
+    <div class="product-no">05 / CORIANDER</div><h3>Coriander</h3>
+    <p>Start a discussion about coriander grade, quantity, packing and destination.</p>
+    <span class="tag">Coriander</span><span class="tag">Bulk Enquiries</span>
+    <a class="product-link" href="#enquiry" data-product="Coriander">ENQUIRE ABOUT CORIANDER ↗</a>
+   </article>
+   <article class="product reveal">
+    <div class="product-no">06 / SOURCING</div><h3>Other Products</h3>
+    <p>Have another Indian agricultural product in mind? Share it for an initial review.</p>
+    <span class="tag">Custom Enquiry</span><span class="tag">Product Sourcing</span>
+    <a class="product-link" href="#enquiry" data-product="Other Products">DISCUSS YOUR REQUIREMENT ↗</a>
+   </article>
+  </div>
+ </div>
+</section>
 
-    <section class="approach-section" id="approach">
-      <div class="approach-left"><p class="eyebrow eyebrow-light">HOW WE WORK</p><h2>Trade begins with<br><em>a clear conversation.</em></h2><p>We start by understanding what the buyer needs, then coordinate discussions around suitable sourcing options and the details required to assess a potential transaction.</p><a class="button button-light" href="#contact">Start an enquiry <span>↗</span></a></div>
-      <div class="steps">
-        <article><span>01</span><div><h3>Share your requirement</h3><p>Tell us the product, destination market, approximate quantity and preferred specifications.</p></div></article>
-        <article><span>02</span><div><h3>Review sourcing options</h3><p>We discuss potential supplier options and clarify details that need confirmation.</p></div></article>
-        <article><span>03</span><div><h3>Coordinate next steps</h3><p>Pricing, samples, documentation, shipping and payment terms are discussed with relevant parties before any commitment.</p></div></article>
-      </div>
-    </section>
+<section class="process" id="process">
+ <div class="wrap">
+  <div class="section-head reveal">
+   <div class="eyebrow">A CLEAR WAY TO BEGIN</div>
+   <h2>Trade starts with<br>a clear conversation.</h2>
+   <p>Every enquiry is reviewed individually. Availability, terms and timelines depend on the product and parties involved.</p>
+  </div>
+  <div class="steps">
+   <article class="step reveal"><b>01</b><h3>Share</h3><p>Tell us the product, quantity, destination and specifications you need.</p></article>
+   <article class="step reveal"><b>02</b><h3>Source</h3><p>We assess the requirement and coordinate with potentially suitable suppliers.</p></article>
+   <article class="step reveal"><b>03</b><h3>Review</h3><p>Review available specifications, quotations, packing and proposed terms.</p></article>
+   <article class="step reveal"><b>04</b><h3>Coordinate</h3><p>Clarify responsibilities, documentation and next steps in writing.</p></article>
+  </div>
+ </div>
+</section>
 
-    <section class="about-section section" id="about">
-      <div class="about-art"><div class="about-art-inner"><span class="about-big">MG</span><span class="about-caption">MANDLOI GLOBAL<br>INDIA</span></div></div>
-      <div class="about-copy"><p class="eyebrow">ABOUT MANDLOI GLOBAL</p><h2>A practical link between<br><em>buyers and suppliers.</em></h2><p>Mandloi Global is building a sourcing and trade coordination business focused initially on rice and Indian spices. We aim to make early-stage trade conversations straightforward, responsive and specific to each buyer's needs.</p><p>We work on an enquiry basis. Product availability, supplier credentials, prices, export readiness and shipment arrangements must be verified before a transaction proceeds.</p><div class="about-points"><span>Clear communication</span><span>Requirement-led sourcing</span><span>Transparent coordination</span></div></div>
-    </section>
+<section id="about">
+ <div class="wrap about-grid">
+  <div class="about-image reveal">Rooted in Indian commerce.</div>
+  <div class="reveal">
+   <div class="eyebrow">ABOUT MANDLOI GLOBAL</div>
+   <h2>Built on clarity.<br>Focused on connections.</h2>
+   <p class="muted">Mandloi Global is developing a buyer-supplier sourcing and trade coordination business from India, initially focused on rice, spices and international buyer enquiries.</p>
+   <ul class="promise">
+    <li>Understand the buyer's requirement first.</li>
+    <li>Coordinate supplier discussions around clear specifications.</li>
+    <li>Keep commercial terms and responsibilities in writing.</li>
+    <li>Discuss any intermediary commission transparently.</li>
+   </ul>
+  </div>
+  <div class="about-panel reveal">
+   <div class="eyebrow">OUR APPROACH</div>
+   <h3>Professional trade.<br>Honest representation.</h3>
+   <p>We aim to make the first conversation straightforward: what you need, what can be sourced, what it may cost and what each party must confirm before proceeding.</p>
+   <p>Product availability, supplier credentials, compliance, pricing and shipment terms are subject to verification for each transaction.</p>
+  </div>
+ </div>
+</section>
 
-    <section class="contact-section" id="contact">
-      <div class="contact-copy"><p class="eyebrow eyebrow-light">TRADE ENQUIRIES</p><h2>Tell us what<br><em>you’re looking for.</em></h2><p>Share a few details and we’ll prepare an enquiry message for you to send by email or WhatsApp.</p><div class="contact-meta"><span>PRODUCT SOURCING</span><span>BUYER ENQUIRIES</span><span>SUPPLIER DISCUSSIONS</span></div></div>
-      <form class="enquiry-form" id="enquiry-form">
-        <div class="form-row"><label for="name">Your name *</label><input id="name" name="name" required placeholder="Full name"></div>
-        <div class="form-row"><label for="company">Company / organisation</label><input id="company" name="company" placeholder="Company name (optional)"></div>
-        <div class="form-row"><label for="email">Email address *</label><input id="email" name="email" type="email" required placeholder="you@company.com"></div>
-        <div class="form-row"><label for="country">Destination country *</label><input id="country" name="country" required placeholder="e.g. United Arab Emirates"></div>
-        <div class="form-row"><label for="product">Product of interest *</label><select id="product" name="product" required><option value="">Select a product</option><option>Rice</option><option>Indian spices</option><option>Dried red chilli</option><option>Other / multiple products</option></select></div>
-        <div class="form-row"><label for="quantity">Approximate quantity</label><input id="quantity" name="quantity" placeholder="e.g. 5 metric tonnes"></div>
-        <div class="form-row form-wide"><label for="details">Requirement details</label><textarea id="details" name="details" rows="3" placeholder="Specifications, packaging, target price or other details"></textarea></div>
-        <div class="form-actions form-wide"><button class="button button-dark" type="submit">Prepare enquiry <span>↗</span></button><p>Submitting opens your email app. No information is stored on this website.</p></div>
-        <div class="form-result form-wide" id="form-result" role="status" aria-live="polite"></div>
-      </form>
-    </section>
-  </main>
+<section class="enquiry" id="enquiry">
+ <div class="wrap enquiry-grid">
+  <div class="contact-info reveal">
+   <div class="eyebrow">START A TRADE CONVERSATION</div>
+   <h2>What are you looking to source?</h2>
+   <p>Share your requirement below, including product, quantity and destination.</p>
+   <div class="contact-line"><strong>Business email</strong><a href="mailto:mandloiglobaltrade@gmail.com">mandloiglobaltrade@gmail.com</a></div>
+   <div class="contact-line"><strong>Helpful details</strong>Product, grade, quantity, destination, packing and delivery timeline.</div>
+  </div>
 
-  <footer class="footer">
-    <a class="brand footer-brand" href="#home"><span class="brand-mark">MG</span><span class="brand-name">MANDLOI <b>GLOBAL</b><small>INDIA · SOURCING · TRADE</small></span></a>
-    <p>Indian agricultural sourcing & trade coordination.</p>
-    <div class="footer-links"><a href="#products">Products</a><a href="#about">About</a><a href="#contact">Trade enquiry</a></div>
-    <div class="footer-bottom"><span>© <span id="year"></span> Mandloi Global. All rights reserved.</span><span>Product details and trade terms subject to confirmation.</span></div>
-  </footer>
-  <script src="script.js"></script>
+  <form class="reveal" action="https://formsubmit.co/mandloiglobaltrade@gmail.com" method="POST">
+   <input type="hidden" name="_subject" value="New Buyer Enquiry - Mandloi Global">
+   <input type="hidden" name="_template" value="table">
+   <div class="form-grid">
+    <div class="field"><label for="name">YOUR NAME *</label><input id="name" name="Name" required autocomplete="name" placeholder="Full name"></div>
+    <div class="field"><label for="company">COMPANY</label><input id="company" name="Company" autocomplete="organization" placeholder="Company name"></div>
+    <div class="field"><label for="country">COUNTRY *</label><input id="country" name="Country" required placeholder="Your country"></div>
+    <div class="field"><label for="email">BUSINESS EMAIL *</label><input id="email" type="email" name="Email" required placeholder="you@company.com"></div>
+    <div class="field"><label for="phone">WHATSAPP / PHONE</label><input id="phone" name="Phone" placeholder="Include country code"></div>
+    <div class="field"><label for="product">PRODUCT *</label>
+     <select id="product" name="Product" required>
+      <option value="">Select product</option>
+      <option>Basmati Rice</option><option>Non-Basmati Rice</option>
+      <option>Turmeric</option><option>Dried Red Chilli</option>
+      <option>Whole Cumin</option><option>Coriander</option><option>Other Products</option>
+     </select>
+    </div>
+    <div class="field"><label for="quantity">ESTIMATED QUANTITY</label><input id="quantity" name="Quantity" placeholder="e.g. 25 MT"></div>
+    <div class="field"><label for="destination">DESTINATION</label><input id="destination" name="Destination" placeholder="City / port / country"></div>
+    <div class="field full"><label for="details">REQUIREMENTS *</label><textarea id="details" name="Requirements" required placeholder="Grade, packing, target price and delivery timeline..."></textarea></div>
+   </div>
+   <p class="privacy">Your details will be used to respond to this business enquiry.</p>
+   <button class="btn submit" type="submit">SUBMIT TRADE ENQUIRY ↗</button>
+  </form>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="wrap footer-inner">
+  <div><div class="logo">MANDLOI GLOBAL<small>INDIA · INTERNATIONAL TRADE</small></div>
+   <p>Building connections between buyers and Indian suppliers.</p>
+   <p>© <span id="year"></span> Mandloi Global. All rights reserved.</p>
+  </div>
+  <div class="footer-links">
+   <a href="#home">Home</a><a href="#products">Products</a>
+   <a href="#about">About</a><a href="#enquiry">Enquiries</a>
+   <a href="mailto:mandloiglobaltrade@gmail.com">Email</a>
+  </div>
+ </div>
+</footer>
+
+<script>
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", function() {
+  const opened = navLinks.classList.toggle("open");
+  menuBtn.setAttribute("aria-expanded", opened);
+  menuBtn.textContent = opened ? "CLOSE ✕" : "MENU ☰";
+});
+
+navLinks.querySelectorAll("a").forEach(function(link) {
+  link.addEventListener("click", function() {
+    navLinks.classList.remove("open");
+    menuBtn.setAttribute("aria-expanded", "false");
+    menuBtn.textContent = "MENU ☰";
+  });
+});
+
+document.querySelectorAll("[data-product]").forEach(function(link) {
+  link.addEventListener("click", function() {
+    document.getElementById("product").value = link.dataset.product;
+  });
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+const revealItems = document.querySelectorAll(".reveal");
+
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {threshold: 0.1});
+
+  revealItems.forEach(function(item) {
+    observer.observe(item);
+  });
+} else {
+  revealItems.forEach(function(item) {
+    item.classList.add("visible");
+  });
+}
+</script>
 </body>
 </html>
